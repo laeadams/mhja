@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 
 import dd.mhja.dao.Region;
 import dd.mhja.dao.RegionDao;
+import dd.mhja.dao.RegionDaoSimple;
 
 @WebServlet("/region/get")
 public class FindRegion extends HttpServlet {
@@ -42,7 +43,8 @@ public class FindRegion extends HttpServlet {
                 return;
             }
 
-            RegionDao regions = new RegionDao();
+            //RegionDao regions = new RegionDao();
+            RegionDaoSimple regions = new RegionDaoSimple();
 
             Optional<Region> opt = regions.read(id);
             if (opt.isPresent()) {

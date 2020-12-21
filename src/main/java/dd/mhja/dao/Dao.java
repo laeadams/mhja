@@ -25,7 +25,7 @@ public abstract class Dao<T, U> {
         try {
             em = JpaUtil.getEntityManager();
             String jpql = "SELECT e FROM " + clazz.getName() + " e";
-            return em.createQuery(jpql, clazz).getResultList();
+            return em.createQuery(jpql, clazz).getResultList(); // si crea il comando SQL necessario
         } catch (Exception ex) {
             LOG.error("Can't create query: " + ex.getMessage());
             throw ex;
@@ -41,7 +41,7 @@ public abstract class Dao<T, U> {
 
         try {
             em = JpaUtil.getEntityManager();
-            T t = em.find(clazz, id);
+            T t = em.find(clazz, id); // si usa il metodo direttamente di EntityManager
             return Optional.ofNullable(t);
         } catch (Exception ex) {
             LOG.error("Can't create query: " + ex.getMessage());
